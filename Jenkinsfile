@@ -12,8 +12,8 @@ pipeline {
         }
         stage('DockerHub Push'){
             steps{
-                withCredentials([string(credentialsId: 'dockerpwd', variable: 'sree-docker')]) {
-                    sh "sudo docker login -u arikatlasrinivasareddy4218 -p ${sree-docker}"
+                withCredentials([string(credentialsId: 'dockerpwd1', variable: 'sree-sample')]) {
+                    sh "sudo docker login -u arikatlasrinivasareddy4218 -p ${sree-sample}"
                     sh "sudo docker push srinivasareddy4218/movies-app:${DOCKER_TAG}"
                 }
             }
