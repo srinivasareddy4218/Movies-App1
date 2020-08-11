@@ -17,9 +17,14 @@ pipeline {
         }
         stage("Deploy To Kuberates Cluster"){
 		steps{	
+                /**frontend **/			
 	    sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-deployment.yaml"
 	      
          sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f frontend/deployment/frontend-deployment.yaml -n msslabs"
+         
+          sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-service.yaml"
+	      
+         sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f frontend/deployment/frontend-service.yaml -n msslabs"
 	
       }
 
