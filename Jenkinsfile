@@ -7,14 +7,14 @@ pipeline {
     stages{
         stage('Build Docker Image'){
             steps{
-                sh "sudo docker build . -t srinivasareddy4218/movies-app:${DOCKER_TAG} "
+                sh "sudo docker build . -t srinivasareddy4218/movies-app:${BUILD_ID} "
             }
         }
         stage('DockerHub Push'){
             steps{
                withCredentials([string(credentialsId: 'sree-Docker-pwd', variable: 'sample')]) {
                     sh "sudo docker login -u srinivasareddy4218 -p ${sample}"
-                    sh "sudo docker push srinivasareddy4218/movies-app:${DOCKER_TAG}"
+                    sh "sudo docker push srinivasareddy4218/movies-app:${BUILD_ID}"
                 }
             }
         }
@@ -27,8 +27,5 @@ pipeline {
 
    }
 } 
-def getDockerTag(){
-    def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
-    return tag
-    }
+
  
