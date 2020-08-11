@@ -34,7 +34,7 @@ pipeline {
 	  /** database **/
 			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' database/deployment/database-deployment.yaml"
-          sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f databasse/deployment/database-deployment.yaml -n msslabs"
+          sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f database/deployment/database-deployment.yaml -n msslabs"
 			
           sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' database/deployment/database-service.yaml" 
 	  sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f database/deployment/database-service.yaml -n msslabs"
