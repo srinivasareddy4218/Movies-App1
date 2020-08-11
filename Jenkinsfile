@@ -1,10 +1,7 @@
 currentBuild.displayName="movies-app-#"+currentBuild.number
 pipeline {
     agent any
-    environment{
-        DOCKER_TAG = getDockerTag()
-    }
-    stages{
+     stages{
         stage('Build Docker Image'){
             steps{
                 sh "sudo docker build . -t srinivasareddy4218/movies-app:${BUILD_ID} "
