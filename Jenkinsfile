@@ -17,6 +17,7 @@ pipeline {
         }
         stage("Deploy To Kuberates Cluster"){
 		steps{	
+			ssh -i  /home/cloud_user/.ssh/id_rsa cloud_user@mss1k8master1
 			sshagent(['kubernetes']) {
 		         sh 'scp -o StrictHostKeyChecking=no $cloud_user@mss1k8master1:~/'
 			}	
