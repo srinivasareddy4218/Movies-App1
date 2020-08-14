@@ -1,10 +1,10 @@
 FROM node
 
-COPY package.json .
+COPY /backend/package.json .
 RUN yarn install
 
-COPY server.js .
-COPY movies-model.js .
+COPY /backend/server.js .
+COPY /backend/movies-model.js .
 
 EXPOSE 4000
 
