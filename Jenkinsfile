@@ -5,6 +5,8 @@ pipeline {
         stage('Build Docker Image'){
             steps{
                 sh "sudo docker build . -t srinivasareddy4218/movies-app:${BUILD_ID} "
+		sh "sudo docker build . -t srinivasareddy4218/frontend:${BUILD_ID} "
+	        sh "sudo docker build . -t srinivasareddy4218/backend:${BUILD_ID} "
             }
         }
         stage('DockerHub Push'){
@@ -12,6 +14,8 @@ pipeline {
                withCredentials([string(credentialsId: 'sree-dockerpwd', variable: 'sample')]) {
                     sh "sudo docker login -u srinivasareddy4218 -p ${sample}"
                     sh "sudo docker push srinivasareddy4218/movies-app:${BUILD_ID}"
+		     sh "sudo docker push srinivasareddy4218/frontend:${BUILD_ID} "  
+		    sh "sudo docker push srinivasareddy4218/backend:${BUILD_ID} "
                 }
             }
         }
