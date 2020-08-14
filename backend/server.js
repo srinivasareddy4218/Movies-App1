@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId =  require('mongodb').ObjectId;
 const model = require('./movies-model');
-
+const cors = require('cors');
 const args = process.argv;
 
 const PORT = 4000;
@@ -14,7 +14,17 @@ const MONGO_DB_NAME = 'movies-db';
 const MONGO_CONNECTION = 'mongodb://' + MONGO_SERVICE_NAME + ':' + MONGO_PORT + '/' + MONGO_DB_NAME;
 
 app.use(bodyParser.json());
-
+app.use(cors());
+app.options("*", cors());
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Expose-Headers', 'CookieValue');
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    next();
+ });
+    
 MongoClient.connect(MONGO_CONNECTION, function (err, db) {
     if (err) throw err;
 
