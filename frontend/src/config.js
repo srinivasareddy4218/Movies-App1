@@ -4,8 +4,8 @@ const BACKEND_NAME = "backend";
 const getDomain = () => window.location.hostname.split(FRONTEND_NAME)[1];
 const getProtocol = () => window.location.protocol;
 
-//const getBackend = () => getProtocol() + "//" + BACKEND_NAME + getDomain();
+const getBackend = () => getProtocol() + "//" + BACKEND_NAME + getDomain();
 
 export const config = {
-  baseURL: "35.224.202.198:30468"
-};
+  baseURL: getBackend()
+  };
