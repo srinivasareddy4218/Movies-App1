@@ -18,7 +18,7 @@ pipeline {
          stage("Deploy To Kuberates Cluster"){
 	     steps{
              sshagent(['azure_kubernetes']){
-		 sh "ssh -o StrictHostKeyChecking=no user@mmss2k8master1.eastus.cloudapp.azure.com 'echo $HOME'"
+		 sh "ssh -o StrictHostKeyChecking=no user@mmss1k8master1.eastus.cloudapp.azure.com 'echo $HOME'"
                /**frontend **/			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-deployment.yaml"
 	  sh " kubectl apply -f frontend/deployment/frontend-deployment.yaml -n msslabs"
