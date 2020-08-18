@@ -17,12 +17,10 @@ pipeline {
         }
          stage("Deploy To Kuberates Cluster"){
 	     steps{
-            // sshagent(['ssh key']){
-		 //sh " scp -o StrictHostKeyChecking=no frontend/deployment/frontend-deployment.yaml cloud_user@mss1k8master1.eastus.cloudapp.azure.com:/var/lib/jenkins "
-         withCredentials([sshUserPrivateKey(credentialsId: 'ssh key', keyFileVariable: '', passphraseVariable: 'cloud paaswd', usernameVariable: 'cloud_user')]) {	
-		 remote.user = cloud_user
-                remote.password = Miracle@2020
-               /**frontend **/			
+            sshagent(['ssh key']){
+		 sh " scp -o StrictHostKeyChecking=no frontend/deployment/frontend-deployment.yaml cloud_user@mss1k8master1.eastus.cloudapp.azure.com:/var/lib/jenkins "
+        // withCredentials([sshUserPrivateKey(credentialsId: 'ssh key', keyFileVariable: '', passphraseVariable: 'cloud paaswd', usernameVariable: 'cloud_user')]) {	
+            /**frontend **/			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-deployment.yaml"
 	  sh " kubectl apply -f frontend/deployment/frontend-deployment.yaml -n msslabs"
          
