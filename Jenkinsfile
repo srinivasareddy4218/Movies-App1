@@ -17,7 +17,8 @@ pipeline {
         }
         stage("Deploy To Kuberates Cluster"){
 		steps{
-          sshagent(['ssh key']){	
+          sshagent(['ssh key']){
+	   withCredentials([sshUserPrivateKey(credentialsId: 'kubeconfig', keyFileVariable: 'sample', passphraseVariable: 'sample', usernameVariable: 'sample')]) {	  
           /**frontend **/			
 	  sh "sed -i -e 's,image_to_be_deployed,'srinivasareddy4218/movies-app:${BUILD_ID}',g' frontend/deployment/frontend-deployment.yaml"
 	  sh "export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl apply -f frontend/deployment/frontend-deployment.yaml -n msslabs"
@@ -43,6 +44,7 @@ pipeline {
       }
 
     }
+    }			
    } 
   }
  } 
