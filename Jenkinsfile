@@ -4,14 +4,14 @@ pipeline {
      stages{
         stage('Build Docker Image'){
             steps{
-                sh "sudo docker build . -t srinivasareddy4218/movies-app:${BUILD_ID} "
+                sh "sudo docker build . -t srinivasareddy4218/movies-app:latest "
             }
         }
         stage('DockerHub Push'){
             steps{
                withCredentials([string(credentialsId: 'sree-docker', variable: 'sample')]) {
-                    sh "sudo docker login -u srinivasareddy4218 -p ${sample}"
-                    sh "sudo docker push srinivasareddy4218/movies-app:${BUILD_ID}"
+                    sh "sudo docker login -u srinivasareddy4218 -p Sree@4218"
+                    sh "sudo docker push srinivasareddy4218/movies-app:latest"
                 }
             }
         }
