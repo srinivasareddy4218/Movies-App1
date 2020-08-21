@@ -32,7 +32,7 @@ pipeline {
                  script {
                      sshagent(credentials : ['sshkey']) {
                         sh "echo pwd"
-                        sh 'ssh -t -t cloud_user@40.117.94.170 -o StrictHostKeyChecking=no'
+                        sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
                         sh "echo pwd"
                         
                  }
