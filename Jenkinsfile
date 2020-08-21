@@ -33,7 +33,7 @@ pipeline {
                      sshagent(credentials : ['sshkey']) {
                         sh "echo pwd"
                         sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
-                        sh "echo pwd"
+                        sh "ls -la"
                          sh "git clone https://github.com/srinivasareddy4218/hellowhale.git"
                         
                  }
