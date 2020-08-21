@@ -1,11 +1,11 @@
 pipeline {
-    agent any
-    environment {
+    agent any{
+    //environment {
         // comment added
-         APPLICATION = 'app'
-         ENVIRONMENT = 'dev'
-         MAINTAINER_NAME = 'jenkins'
-         MAINTAINER_EMAIL = 'jenkins@email.com'
+        // APPLICATION = 'app'
+        // ENVIRONMENT = 'dev'
+        // MAINTAINER_NAME = 'jenkins'
+        // MAINTAINER_EMAIL = 'jenkins@email.com'
     }
       stages {
          stage('clone repository') {
