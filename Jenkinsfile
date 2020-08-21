@@ -32,7 +32,7 @@ pipeline {
                  script {
                      sshagent(credentials : ['sshkey']) {
                         sh "echo pwd"
-                        sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
+                        sh 'ssh -t -t azureuser@40.117.94.170 -o StrictHostKeyChecking=no'
                         sh "echo pwd"
                          sh " docker rmi srinivasareddy4218/movies-app:latest"
                          sh "docker pull srinivasareddy4218/movies-app"
