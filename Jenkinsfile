@@ -29,9 +29,8 @@ pipeline {
         }
          stage('Build Image') {
              steps {
-                 script {
-                     sshagent(credentials : ['sshkey']) {
-                         sh " scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/movies-app/frontend/deployment/frontend-deployment.yaml azureuser@40.117.94.170:/home/azureuser"
+                  sshagent(credentials : ['sshkey']) {
+                      sh " scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/movies-app/frontend/deployment/frontend-deployment.yaml azureuser@40.117.94.170:/home/azureuser"
                          script{
                              try{
                               sh "ssh azureuser@40.117.94.170 kubectl apply -f ."
@@ -48,5 +47,6 @@ pipeline {
        }
      }
    }
- }         
+ }
+    
   
