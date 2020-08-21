@@ -34,10 +34,7 @@ pipeline {
                         sh "echo pwd"
                         sh 'ssh -t -t azureuser@40.117.94.170 -o StrictHostKeyChecking=no'
                         sh "echo pwd"
-                        sh 'sudo -i -u root'
-                        sh 'cd /opt/docker/web'
-                        sh 'echo pwd'
-                    }
+                        
                  }
              }
          }
