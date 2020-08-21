@@ -6,7 +6,7 @@ pipeline {
         // ENVIRONMENT = 'dev'
         // MAINTAINER_NAME = 'jenkins'
         // MAINTAINER_EMAIL = 'jenkins@email.com'
-    }
+    //}
       stages {
          stage('clone repository') {
              steps {
@@ -37,8 +37,9 @@ pipeline {
                          sh "cd hellowhale && ls -la && pwd "//&& kubectl apply -f hellowhale.yml -n sree"
                          
                         
-                 }
-             }
-        }
+            }
+          }
+       }
+     }
   }
 }   
