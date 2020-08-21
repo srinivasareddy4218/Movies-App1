@@ -32,7 +32,8 @@ pipeline {
                  script {
                      sshagent(credentials : ['sshkey']) {
                          sh " scp -o StrictHostKeyChecking=no  /var/lib/jenkins/workspace/movies-app/frontend/deployment/frontend-deployment.yaml azureuser@40.117.94.170:/home/azureuser"
-                        sh "whoami && pwd"
+                        sh " kubectl apply -f frontend-deployment.yaml -n sree"
+                         sh "whoami && pwd"
                          //sh 'ssh -t -t azureuser@40.117.94.170 -o StrictHostKeyChecking=no'
                          sh "ls -la"
             
