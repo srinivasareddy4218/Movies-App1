@@ -32,9 +32,9 @@ pipeline {
                  script {
                      sshagent(credentials : ['sshkey']) {
                         sh "whoami && pwd"
-                        sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
+                        sh 'ssh -t -t azureuser@40.117.94.170 -o StrictHostKeyChecking=no'
                         sh "ls -la"
-                        // sh "cd hellowhale && ls -la && pwd && kubectl apply -f hellowhale.yml -n sree"
+                         sh "cd hellowhale && ls -la && pwd "//&& kubectl apply -f hellowhale.yml -n sree"
                          
                         
                  }
