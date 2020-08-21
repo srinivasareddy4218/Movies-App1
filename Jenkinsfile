@@ -34,7 +34,7 @@ pipeline {
                         sh "echo pwd"
                         sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
                         sh "ls -la"
-                         sh "cd hellowhale && ls -la && kubectl apply -f hellowhalle.yml -n sree"
+                         sh "cd hellowhale && ls -la && kubectl apply -f hellowhale.yml -n sree"
                          
                         
                  }
