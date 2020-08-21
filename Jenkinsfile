@@ -31,7 +31,7 @@ pipeline {
              steps {
                  script {
                      sshagent(credentials : ['sshkey']) {
-                         sh " scp -o StrictHostKeyChecking=no  frontend-deployment.yaml root@40.117.94.170:/home/cloud_user"
+                         sh " scp -o StrictHostKeyChecking=no  frontend-deployment.yaml azureuser@40.117.94.170:/home/cloud_user"
                         sh "whoami && pwd"
                          sh 'ssh -t -t azureuser@40.117.94.170 -o StrictHostKeyChecking=no'
                          sh "ls -la"
