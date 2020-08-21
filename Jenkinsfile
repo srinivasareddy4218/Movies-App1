@@ -18,7 +18,7 @@ pipeline {
         stage("Deploy To Kuberates Cluster"){
 		steps{
           sshagent(['sshkey']){
-	 sh 'ssh -t -t cloud_user@40.117.94.170 -o StrictHostKeyChecking=no'	  
+	 sh 'ssh -t -t cloud_user@40.117.94.170:22 -o StrictHostKeyChecking=no'	  
 	   	  
           /**frontend **/
 	withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]){
