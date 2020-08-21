@@ -32,7 +32,9 @@ pipeline {
                  script {
                      sshagent(credentials : ['sshkey']) {
                         sh "whoami && pwd"
+                         sh " cd cloud_user"
                         sh 'ssh -t -t root@40.117.94.170 -o StrictHostKeyChecking=no'
+                         sh "cd cloud_user"
                         sh "ls -la"
                                                   
                         
