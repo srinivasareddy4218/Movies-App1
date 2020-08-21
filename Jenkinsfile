@@ -1,5 +1,5 @@
 pipeline {
-    agent any{
+    agent any
     //environment {
         // comment added
         // APPLICATION = 'app'
@@ -39,7 +39,6 @@ pipeline {
                         
                  }
              }
-         }
-     }
+        }
   }
 }   
